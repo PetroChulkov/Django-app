@@ -1,0 +1,35 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+
+<div class="text-bg-light p-3">
+    <h1>Profile page: {{user.username}}</h1>
+    <img src="{{ user.profile.avatar.url }}" alt="avatar of user"/>
+</div>
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Change Profile Picture</span>
+        <label>
+            {{ profile_form.avatar }}
+        </label>
+        <span>{{ profile_form.errors.avatar }}</span>
+    </div>
+    <div class="grid">
+        <button class="btn btn-success">Save Changes</button>
+        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+    </div>
+
+</form>
+
+{% endblock content %}

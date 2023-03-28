@@ -1,0 +1,40 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'quotesapp:quote' %}">
+    {% csrf_token %}
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+        <label>
+            {{ form.fullname }}
+        </label>
+        <span>{{ form.errors.name }}</span>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Born Date</span>
+        <label>
+            {{ form.borndate }}
+        </label>
+        <span>{{ form.errors.description }}</span>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Born Location</span>
+        <label>
+            {{ form.location }}
+        </label>
+        <span>{{ form.errors.description }}</span>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Info about author</span>
+        <label>
+            {{ form.description }}
+        </label>
+        <span>{{ form.errors.description }}</span>
+    </div>
+    <div class="grid">
+        <button class="btn btn-success" >Submit</button>
+        <button class="btn btn-outline-secondary" type="button">Reset</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
+        <label>
+            {{ form.username }}
+        </label>
+    </div>
+    <br>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+        <label>
+            {{ form.password }}
+        </label>
+
+    </div>
+    <div class="grid">
+        <button class="btn btn-success">Submit</button>
+        <button class="btn btn-outline-secondary">Reset</button>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'quotesapp:quote' %}">
+    {% csrf_token %}
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Quote</span>
+        <label>
+            {{ form.quote }}
+        </label>
+        <span>{{ form.errors.quote }}</span>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+        <label>
+            {{ form.author }}
+        </label>
+        <span>{{ form.errors.author }}</span>
+    </div>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Tags</span>
+        <label>
+            {{ form.tags }}
+        </label>
+        <span>{{ form.errors.tags }}</span>
+    </div>
+    <div class="grid">
+        <button class="btn btn-success" >Submit</button>
+        <button class="btn btn-outline-secondary" type="button">Reset</button>
+    </div>
+</form>
+{% endblock %}
