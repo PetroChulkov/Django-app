@@ -30,6 +30,9 @@
         <button class="btn btn-success">Submit</button>
         <button class="btn btn-outline-secondary">Reset</button>
     </div>
+    <div class="small text-center">
+        <a href="{% url "users:password_reset" %}" class="text-center"><i>Forgot Password?</i></a>
+    </div>
 </form>
 
 {% endblock %}
